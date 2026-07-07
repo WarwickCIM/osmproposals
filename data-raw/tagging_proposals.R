@@ -1,5 +1,5 @@
 ## This code prepares `tagging_proposals` dataset
-library(osmtaggingr)
+library(osmproposals)
 
 
 # Tagging proposals -------------------------------------------------------

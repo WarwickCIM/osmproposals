@@ -11,10 +11,10 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-library(osmtaggingr)
+library(osmproposals)
 ```
 
-# OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging
+# OSMpRoposals: Reproducible Datasets about OpenStreetMap's Tagging Proposals.
 
 <!-- badges: start -->
 
@@ -24,7 +24,7 @@ library(osmtaggingr)
 
 <!-- badges: end -->
 
-The goal of `{osmtaggingr}` is to provide reproducible datasets containing information about [OpenStreetMap](http://openstreetmap.org)'s tagging proposals. It does so by querying and webscrapping OSM's wiki via helper functions. 
+The goal of `{OSMpRoposals}` is to provide reproducible datasets containing information about [OpenStreetMap](http://openstreetmap.org)'s tagging proposals. It does so by querying and webscrapping OSM's wiki via helper functions. 
 
 The package contains the following datasets, as well as associated metadata and functions to recreate them:
 
@@ -42,15 +42,15 @@ This is an output of the research project _["Can digital goods be neutral? Evalu
 You are free to use and reuse this tool under the licence conditions.  
 If you use this package in your work, please cite it as below:
 
-> Cámara-Menoyo C, Monteath T (2026). OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging. R package version 0.0.0.9000, https://github.com/WarwickCIM/OSMtaggingR.
+> Cámara-Menoyo C, Monteath T (2026). OSMpRoposals: Reproducible Datasets about OpenStreetMap's Tagging Proposals. R package version 0.0.0.9000, https://github.com/WarwickCIM/OSMpRoposals.
 
 ```bibtex
 @Manual{,
-  title = {OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging},
+  title = {OSMpRoposals: Reproducible Datasets about OpenStreetMap's Tagging Proposals},
   author = {{C{\'a}mara-Menoyo}, Carlos},,
   year = {2026},
   note = {R package version 0.0.0.9000},
-  url = {https://github.com/WarwickCIM/OSMtaggingR},
+  url = {https://github.com/WarwickCIM/OSMpRoposals},
   collaborator = {Monteath, Timothy}
 }
 ```
@@ -59,11 +59,11 @@ If you use this package in your work, please cite it as below:
 
 ## Installation
 
-You can install the development version of osmtaggingr from [GitHub](https://github.com/) with:
+You can install the development version of `{OSMpRoposals}` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("warwickcim/osmtaggingr")
+devtools::install_github("warwickcim/osmproposals")
 ```
 
 ## Example
@@ -71,7 +71,7 @@ devtools::install_github("warwickcim/osmtaggingr")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(osmtaggingr)
+library(osmproposals)
 
 # Load the built in datasets.
 data(proposals)

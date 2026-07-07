@@ -1,11 +1,11 @@
-url: https://warwickcim.github.io/osmtaggingr/
+url: https://warwickcim.github.io/osmproposals/
 template:
   bootstrap: 5
 reference:
   - title: "Datasets"
     desc: >
       Datasets provided by this package
-    contents: 
+    contents:
     - proposals
     - proposals_votes
   - title: "Data retrieval"

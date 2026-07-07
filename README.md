@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file and then run `devtools::build_readme()` to render with the latest version of the code.-->
 
-# OSMtaggingR: Reproducible Datasets about OpenStreetMap’s tagging
+# OSMpRoposals: Reproducible Datasets about OpenStreetMap’s Tagging Proposals.
 
 <!-- badges: start -->
 
@@ -13,7 +13,7 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 
 <!-- badges: end -->
 
-The goal of `{osmtaggingr}` is to provide reproducible datasets
+The goal of `{OSMpRoposals}` is to provide reproducible datasets
 containing information about [OpenStreetMap](http://openstreetmap.org)’s
 tagging proposals. It does so by querying and webscrapping OSM’s wiki
 via helper functions.
@@ -44,29 +44,29 @@ Good Research Fund 2024-25.
 You are free to use and reuse this tool under the licence conditions.  
 If you use this package in your work, please cite it as below:
 
-> Cámara-Menoyo C, Monteath T (2026). OSMtaggingR: Reproducible Datasets
-> about OpenStreetMap’s tagging. R package version 0.0.0.9000,
-> <https://github.com/WarwickCIM/OSMtaggingR>.
+> Cámara-Menoyo C, Monteath T (2026). OSMpRoposals: Reproducible
+> Datasets about OpenStreetMap’s Tagging Proposals. R package version
+> 0.0.0.9000, <https://github.com/WarwickCIM/OSMpRoposals>.
 
 ``` bibtex
 @Manual{,
-  title = {OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging},
+  title = {OSMpRoposals: Reproducible Datasets about OpenStreetMap's Tagging Proposals},
   author = {{C{\'a}mara-Menoyo}, Carlos},,
   year = {2026},
   note = {R package version 0.0.0.9000},
-  url = {https://github.com/WarwickCIM/OSMtaggingR},
+  url = {https://github.com/WarwickCIM/OSMpRoposals},
   collaborator = {Monteath, Timothy}
 }
 ```
 
 ## Installation
 
-You can install the development version of osmtaggingr from
+You can install the development version of `{OSMpRoposals}` from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("warwickcim/osmtaggingr")
+devtools::install_github("warwickcim/osmproposals")
 ```
 
 ## Example
@@ -74,7 +74,7 @@ devtools::install_github("warwickcim/osmtaggingr")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(osmtaggingr)
+library(osmproposals)
 
 # Load the built in datasets.
 data(proposals)
@@ -87,7 +87,7 @@ proposals <- tibble::as_tibble(proposals)
 head(proposals)
 #> # A tibble: 6 × 30
 #>   status   title                  sortkeyprefix timestamp           pagelanguage
-#>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
+#>   <fct>    <chr>                  <chr>         <dttm>              <fct>       
 #> 1 Rejected Proposal:Electricity   "\"electrici… 2022-03-15 02:38:02 en          
 #> 2 Rejected Proposal:Motorcycle f… "\"tag motor… 2022-03-14 20:31:57 en          
 #> 3 Rejected Proposal:Tramtrack on… "\"Tramtrack… 2022-03-15 03:40:16 en          
