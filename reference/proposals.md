@@ -4,7 +4,7 @@ A data frame with 2115 rows and 30 columns, containing all Approved,
 Rejected and Proposed tagging proposals from the [OSM
 Wiki](https://wiki.openstreetmap.org), as well as their associated
 metadata. This dataset has been created by the function
-[`get_tagging_proposals()`](https://warwickcim.github.io/osmtaggingr/reference/get_tagging_proposals.md)
+[`get_tagging_proposals()`](https://warwickcim.github.io/osmproposals/reference/get_tagging_proposals.md)
 ran from the script `data-raw/tagging_proposals.R`.
 
 ## Usage
@@ -19,12 +19,12 @@ columns:
 
 - status:
 
-  a factor describing the proposal status: Approved, Rejected, Voting,
-  Proposed, Draft, Abandoned, Canceled, Obsoleted, Inactive
+  (factor) the current status of the proposal: Approved, Rejected,
+  Voting, Proposed, Draft, Abandoned, Canceled, Obsoleted, Inactive.
 
 - title:
 
-  a string with the wiki page containing the proposal
+  (string) the title of the page containing the proposal.
 
 - sortkeyprefix:
 
@@ -32,12 +32,16 @@ columns:
 
 - timestamp:
 
-  a date and time. Not sure what which refers to. DELETE?
+  a date and time.
 
 - pagelanguage:
 
-  a factor with the page's language. NOT WORKING, ALWAYS ENGLISH AND IT
-  IS NOT TRUE. FIND ALTERNATIVE WAYS OF RETRIEVING THIS
+  (factor) the page's language, according to WikiMedia. Note that this
+  will not necessarily match the actual language used to write the
+  proposal. This is because how MediaWiki handles internationalisation,
+  which assumes that every page is first written in English and then
+  translated into other languages. Because that, any page without
+  translation will be considered to be in English.
 
 - touched:
 
@@ -89,11 +93,14 @@ columns:
 
 - proposed_by:
 
-  a string containing the name of the user(s) making the proposal.
+  (string) name of the user(s) making the proposal. This can contain
+  multiple values and therefore, differ from page_creator. This is
+  because there can only be one user creating a page, but the proposals
+  can be a joint effort.
 
 - tagging:
 
-  a string describing the proposed tagging scheme
+  (string) short description of the proposed tagging scheme.
 
 - applies_to_node:
 
@@ -113,8 +120,8 @@ columns:
 
 - definition:
 
-  a string containing a a short definition of what the tagging proposal
-  aims to describe.
+  (string) short definition of what the tagging proposal aims to
+  describe.
 
 - rendered_as:
 

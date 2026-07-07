@@ -11,16 +11,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/WarwickCIM/osmtaggingr/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/WarwickCIM/osmproposals/blob/main/DESCRIPTION)
 
-Cámara-Menoyo C (2026). *osmtaggingr: OSMtaggingR: Reproducible Datasets
-about OpenStreetMap's tagging*. R package version 0.0.0.9000,
-<https://github.com/WarwickCIM/osmtaggingr>.
+Cámara-Menoyo C (2026). *osmproposals: OSMpRoposals: Reproducible
+Datasets about OpenStreetMap's Tagging Proposals*. R package version
+0.0.0.9000, <https://github.com/WarwickCIM/osmproposals>.
 
     @Manual{,
-      title = {osmtaggingr: OSMtaggingR: Reproducible Datasets about OpenStreetMap's tagging},
+      title = {osmproposals: OSMpRoposals: Reproducible Datasets about OpenStreetMap's Tagging Proposals},
       author = {Carlos Cámara-Menoyo},
       year = {2026},
       note = {R package version 0.0.0.9000},
-      url = {https://github.com/WarwickCIM/osmtaggingr},
+      url = {https://github.com/WarwickCIM/osmproposals},
     }

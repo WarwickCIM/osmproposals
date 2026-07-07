@@ -43,7 +43,7 @@ get_tagging_proposals(
 ## Value
 
 a dataframe containing tagging proposals and associated metadata (see
-[`proposals`](https://warwickcim.github.io/osmtaggingr/reference/proposals.md)
+[`proposals`](https://warwickcim.github.io/osmproposals/reference/proposals.md)
 for a description of its metadata).
 
 ## Examples
@@ -65,19 +65,15 @@ proposals <- get_tagging_proposals("Proposed")
 #> ── Retrieving proposals' voting summaries ──────────────────────────────────────
 #> Webscraping ■■■■■■■■■■■■■                     40% | ETA:  2s
 #> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
-#> Warning: There was 1 warning in `dplyr::mutate()`.
-#> ℹ In argument: `dplyr::across(dplyr::any_of("rfc_start"), lubridate::ymd)`.
-#> Caused by warning:
-#> !  1 failed to parse.
 head(proposals)
 #> # A tibble: 5 × 28
 #>   status   title                  sortkeyprefix timestamp           pagelanguage
 #>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
 #> 1 Proposed Proposal:3D tagging f… 3D tagging f… 2025-09-06 17:57:58 en          
-#> 2 Proposed Proposal:Note suffix   :note suffix  2022-07-12 09:33:14 en          
-#> 3 Proposed Proposal:Access key    access_key    2024-10-15 12:03:14 en          
-#> 4 Proposed Proposal:Add language… Add language… 2024-11-13 09:49:37 en          
-#> 5 Proposed Proposal:Addr:interval addr:interpo… 2022-03-15 14:59:09 en          
+#> 2 Proposed Proposal:*:language-L… :<language>-… 2026-05-01 00:14:54 en          
+#> 3 Proposed Proposal:Note suffix   :note suffix  2022-07-12 09:33:14 en          
+#> 4 Proposed Proposal:Access key    access_key    2024-10-15 12:03:14 en          
+#> 5 Proposed Proposal:Add language… Add language… 2024-11-13 09:49:37 en          
 #> # ℹ 23 more variables: touched <dttm>, length <int>, fullurl <chr>,
 #> #   editurl <chr>, pageid <int>, page_creator <fct>,
 #> #   date_of_page_creation <dttm>, latest_editor <fct>,
