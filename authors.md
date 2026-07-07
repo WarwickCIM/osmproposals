@@ -11,7 +11,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/WarwickCIM/osmproposals/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/WarwickCIM/osmproposals/blob/0.0.9.000-rename/DESCRIPTION)
 
 Cámara-Menoyo C (2026). *osmproposals: OSMpRoposals: Reproducible
 Datasets about OpenStreetMap's Tagging Proposals*. R package version
