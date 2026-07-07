@@ -7,11 +7,11 @@
 \format{
 columns:
 \describe{
-\item{status}{a factor describing the proposal status: Approved, Rejected, Voting, Proposed, Draft, Abandoned, Canceled, Obsoleted, Inactive}
-\item{title}{a string with the wiki page containing the proposal}
+\item{status}{(factor) the current status of the proposal: Approved, Rejected, Voting, Proposed, Draft, Abandoned, Canceled, Obsoleted, Inactive.}
+\item{title}{(string) the title of the page containing the proposal.}
 \item{sortkeyprefix}{a string}
-\item{timestamp}{a date and time. Not sure what which refers to. DELETE?}
-\item{pagelanguage}{a factor with the page's language. NOT WORKING, ALWAYS ENGLISH AND IT IS NOT TRUE. FIND ALTERNATIVE WAYS OF RETRIEVING THIS}
+\item{timestamp}{a date and time.}
+\item{pagelanguage}{(factor) the page's language, according to WikiMedia. Note that this will not necessarily match the actual language used to write the proposal. This is because how MediaWiki handles internationalisation, which assumes that every page is first written in English and then translated into other languages. Because that, any page without translation will be considered to be in English.}
 \item{touched}{a timestamp when the page was last touched}
 \item{length}{(integer) page's length, in bytes.}
 \item{fullurl}{(string) URL pointing to the proposal's page.}
@@ -24,13 +24,13 @@ columns:
 \item{total_number_of_edits}{(integer) number of total times that the page has been edited.}
 \item{total_number_of_disctinct_authors}{(integer) number of distinct users who have edited the page.}
 \item{proposal_status}{(factor) status of a proposal.}
-\item{proposed_by}{a string containing the name of the user(s) making the proposal.}
-\item{tagging}{a string describing the proposed tagging scheme}
+\item{proposed_by}{(string) name of the user(s) making the proposal. This can contain multiple values and therefore, differ from page_creator. This is because there can only be one user creating a page, but the proposals can be a joint effort.}
+\item{tagging}{(string) short description of the proposed tagging scheme.}
 \item{applies_to_node}{(Boolean) whether this tag applies to nodes or not.}
 \item{applies_to_way}{(Boolean) whether this tag applies to ways or not.}
 \item{applies_to_area}{(Boolean) whether this tag applies to areas or not.}
 \item{applies_to_relation}{(Boolean) whether this tag applies to relations or not.}
-\item{definition}{a string containing a a short definition of what the tagging proposal aims to describe.}
+\item{definition}{(string) short definition of what the tagging proposal aims to describe.}
 \item{rendered_as}{a string describing how the tagg is/should be rendered in the map (if any).}
 \item{draft_started}{date in which the proposal draft started.}
 \item{rfc_start}{date in which Request For Comments (RFC) started.}
