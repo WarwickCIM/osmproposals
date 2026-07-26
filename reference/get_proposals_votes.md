@@ -37,18 +37,18 @@ a dataframe with the following columns:
 proposal_votes <- get_proposals_votes('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
 
 proposal_votes
-#> # A tibble: 23 × 4
-#>    url                                                     votes_raw vote  user 
-#>    <chr>                                                   <chr>     <fct> <fct>
-#>  1 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Luke 
-#>  2 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Gaus…
-#>  3 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Dr C…
-#>  4 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I oppose… Oppo… NA   
-#>  5 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Blen…
-#>  6 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Mar …
-#>  7 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I have c… Abst… Jona…
-#>  8 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Nori…
-#>  9 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Nanou
-#> 10 https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Andr…
+#> # A tibble: 23 × 5
+#>    url                                 votes_raw vote  user  date_vote          
+#>    <chr>                               <chr>     <fct> <fct> <dttm>             
+#>  1 https://wiki.openstreetmap.org/wik… I approv… Appr… Luke  2021-01-18 19:21:00
+#>  2 https://wiki.openstreetmap.org/wik… I approv… Appr… Gaus… 2021-01-18 19:34:00
+#>  3 https://wiki.openstreetmap.org/wik… I approv… Appr… Dr C… 2021-01-18 20:52:00
+#>  4 https://wiki.openstreetmap.org/wik… I oppose… Oppo… NA    NA                 
+#>  5 https://wiki.openstreetmap.org/wik… I approv… Appr… Blen… 2021-01-19 14:17:00
+#>  6 https://wiki.openstreetmap.org/wik… I approv… Appr… Mar … 2021-01-20 17:27:00
+#>  7 https://wiki.openstreetmap.org/wik… I have c… Abst… Jona… 2021-01-21 08:13:00
+#>  8 https://wiki.openstreetmap.org/wik… I approv… Appr… Nori… 2021-01-21 12:25:00
+#>  9 https://wiki.openstreetmap.org/wik… I approv… Appr… Nanou 2021-01-21 12:28:00
+#> 10 https://wiki.openstreetmap.org/wik… I approv… Appr… Andr… 2021-01-21 12:28:00
 #> # ℹ 13 more rows
 ```

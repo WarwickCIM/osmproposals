@@ -28,7 +28,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Scrape votes for tagging proposals</h1>
-      <small class="dont-index">Source: <a href="https://github.com/WarwickCIM/osmproposals/blob/0.0.9.000-rename/R/get_proposals_votes.R" class="external-link"><code>R/get_proposals_votes.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/WarwickCIM/osmproposals/blob/main/R/get_proposals_votes.R" class="external-link"><code>R/get_proposals_votes.R</code></a></small>
       <div class="d-none name"><code>get_proposals_votes.Rd</code></div>
     </div>
 
@@ -63,19 +63,19 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">proposal_votes</span> <span class="op">&lt;-</span> <span class="fu">get_proposals_votes</span><span class="op">(</span><span class="st">'https://wiki.openstreetmap.org/wiki/Proposal:Electricity'</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">proposal_votes</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 × 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    url                                                     votes_raw vote  user </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Luke </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Gaus…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Dr C…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I oppose… Oppo… <span style="color: #BB0000;">NA</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Blen…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Mar …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I have c… Abst… Jona…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Nori…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Nanou</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> https://wiki.openstreetmap.org/wiki/Proposal:Electrici… I approv… Appr… Andr…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 23 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    url                                 votes_raw vote  user  date_vote          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Luke  2021-01-18 <span style="color: #949494;">19:21:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Gaus… 2021-01-18 <span style="color: #949494;">19:34:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Dr C… 2021-01-18 <span style="color: #949494;">20:52:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> https://wiki.openstreetmap.org/wik… I oppose… Oppo… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Blen… 2021-01-19 <span style="color: #949494;">14:17:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Mar … 2021-01-20 <span style="color: #949494;">17:27:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> https://wiki.openstreetmap.org/wik… I have c… Abst… Jona… 2021-01-21 <span style="color: #949494;">08:13:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Nori… 2021-01-21 <span style="color: #949494;">12:25:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Nanou 2021-01-21 <span style="color: #949494;">12:28:00</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> https://wiki.openstreetmap.org/wik… I approv… Appr… Andr… 2021-01-21 <span style="color: #949494;">12:28:00</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 13 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -89,7 +89,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>
