@@ -7,10 +7,10 @@
 #' @returns a dataframe with the following columns:
 #' - `fullurl`: (string) the URL to the tagging proposal wiki page.
 #' - `votes_raw`: (string) the raw text describing the vote.
-#' - `vote`: (factor) vote (approve, abstain, oppose), inferred from the votes_raw text.
+#' - `vote`: (factor) vote (Approve, Oppose, Abstain, Other), based on the svg starting the `title` attribute of the vote icon's link.
 #' - `user`: (factor) voter's username.
-#' - `date_vote`: (date) date in which the vote was cast.
-
+#' - `date_vote`: (POSIXct, UTC) date and time the vote was cast.
+#'
 #' @export
 #'
 #' @examples
@@ -22,54 +22,107 @@ get_proposals_votes <- function(urls) {
   votes_df <- data.frame()
   pb <- cli::cli_progress_bar("Scraping proposals", total = length(urls))
 
+  # Only <li> nodes that come after the "Voting" heading AND whose very
+  # first child element is the vote icon (<span typeof="mw:File">).
+  # Requiring the icon to be the first child is what:
+  #  1. Excludes the "Instructions for voting" votes inside a table.
+  #  2. Excludes footer/navigation <li>s picked up by `following::` (no icon).
+  #  3. Excludes nested/threaded reply <li>s inside a vote (the icon
+  #     belongs only to the outer vote <li>), which is what was causing
+  #     multi-paragraph / threaded votes to be counted twice.
+  vote_li_xpath <- "//*[@id='Voting']/following::li[*[1][self::span][@typeof='mw:File']][not(ancestor::table)]"
+
   for (url in urls) {
-    tmp_df <- NULL
     result <- tryCatch(
       {
         page <- rvest::read_html(url)
-        li_votes <- page |>
-          rvest::html_elements(xpath = "//*[@id='Voting']/following::ul/li") |>
-          rvest::html_text2()
+        vote_nodes <- rvest::html_elements(page, xpath = vote_li_xpath)
 
-        tmp_df <- data.frame(
+        if (length(vote_nodes) == 0) {
+          stop("No votes found with the expected structure")
+        }
+
+        votes_raw <- rvest::html_text2(vote_nodes)
+
+        # Vote type: read straight off the icon's <a title="..."> attribute,
+        # e.g. "I approve this proposal" / "I oppose this proposal" /
+        # "I abstain from voting but have comments". This is far more robust
+        # than pattern-matching the surrounding free text, and picks up
+        # non-standard vote types (see Template:Vote) as "Other" instead of
+        # silently dropping them.
+        icon_title <- purrr::map_chr(vote_nodes, function(li) {
+          a_node <- rvest::html_element(
+            li,
+            xpath = ".//span[1][@typeof='mw:File']/a[1]"
+          )
+          if (is.na(a_node)) {
+            return(NA_character_)
+          }
+          rvest::html_attr(a_node, "title")
+        })
+
+        vote <- dplyr::case_when(
+          stringr::str_detect(
+            icon_title,
+            stringr::regex("approve", ignore_case = TRUE)
+          ) ~ "Approve",
+          stringr::str_detect(
+            icon_title,
+            stringr::regex("oppose", ignore_case = TRUE)
+          ) ~ "Oppose",
+          stringr::str_detect(
+            icon_title,
+            stringr::regex("abstain", ignore_case = TRUE)
+          ) ~ "Abstain",
+          !is.na(icon_title) ~ "Other",
+          TRUE ~ NA_character_
+        )
+
+        # Username: the LAST link inside the <li> whose title starts with
+        # "User:" (as opposed to "User talk:"). Taking the last such link
+        # (rather than the first) protects against votes whose comment body
+        # happens to mention another user before the actual signature.
+        # Works for both existing user pages and red-linked ones.
+        user <- purrr::map_chr(vote_nodes, function(li) {
+          user_links <- rvest::html_elements(
+            li,
+            xpath = ".//a[starts-with(@title, 'User:')]"
+          )
+          if (length(user_links) == 0) {
+            return(NA_character_)
+          }
+          last_link <- user_links[[length(user_links)]]
+          stringr::str_trim(rvest::html_text2(last_link))
+        })
+
+        # Date/time of the vote: taken from the signature timestamp that
+        # ~~~~ inserts, e.g. "15:26, 19 April 2020 (UTC)"
+        date_vote_chr <- stringr::str_extract(
+          votes_raw,
+          "\\d{1,2}:\\d{2},\\s*\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}\\s*\\(UTC\\)"
+        )
+        date_vote <- as.POSIXct(
+          date_vote_chr,
+          format = "%H:%M, %d %B %Y (UTC)",
+          tz = "UTC"
+        )
+
+        data.frame(
           url = url,
-          votes_raw = li_votes
-        ) |>
-          dplyr::mutate(
-            vote = dplyr::case_when(
-              stringr::str_detect(
-                votes_raw,
-                "I approve this proposal"
-              ) ~ "Approve",
-              stringr::str_detect(
-                votes_raw,
-                "I oppose this proposal"
-              ) ~ "Oppose",
-              stringr::str_detect(
-                votes_raw,
-                "I have comments but abstain from voting on this proposal"
-              ) ~ "Abstain"
-            ),
-            user = stringr::str_match(
-              votes_raw,
-              "[.\\-]\\s*([A-Za-z0-9 ]+)\\s*\\(talk\\)"
-            )[, 2],
-            user = stringr::str_remove_all(user, "-"),
-            user = stringr::str_remove_all(user, "\\."),
-            user = stringr::str_remove(user, "\\(talk\\)"),
-            user = stringr::str_trim(user)
-          ) |>
-          dplyr::filter(!is.na(vote))
-        tmp_df
+          votes_raw = votes_raw,
+          vote = vote,
+          user = user,
+          date_vote = date_vote
+        )
       },
       error = function(e) {
-        # If error, create a row with url and empty columns
         message(sprintf("Could not scrape %s: %s", url, e$message))
         data.frame(
           url = url,
           votes_raw = NA_character_,
           vote = NA_character_,
-          user = NA_character_
+          user = NA_character_,
+          date_vote = as.POSIXct(NA)
         )
       }
     )
@@ -78,6 +131,7 @@ get_proposals_votes <- function(urls) {
     cli::cli_progress_update()
     Sys.sleep(runif(1, min = 5, max = 30))
   }
+
   votes_df <- votes_df |>
     dplyr::mutate(
       vote = as.factor(vote),
