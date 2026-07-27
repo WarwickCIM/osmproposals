@@ -56,7 +56,7 @@
 #'
 #' columns:
 #' \describe{
-#'   \item{url}{(string) the URL to the tagging proposal wiki page.}
+#'   \item{url}{(factor, string) the URL to the tagging proposal wiki page.}
 #'   \item{votes_raw}{a string with the wiki page containing the proposal.}
 #'   \item{vote}{(factor) vote type (approve, abstain, oppose).}
 #'   \item{user}{(factor) voter's username}

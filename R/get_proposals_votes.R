@@ -134,6 +134,7 @@ get_proposals_votes <- function(urls) {
 
   votes_df <- votes_df |>
     dplyr::mutate(
+      url = as.factor(url),
       vote = as.factor(vote),
       user = as.factor(user)
     ) |>
