@@ -24,12 +24,12 @@ a dataframe with the following columns:
 
 - `votes_raw`: (string) the raw text describing the vote.
 
-- `vote`: (factor) vote (approve, abstain, oppose), inferred from the
-  votes_raw text.
+- `vote`: (factor) vote (Approve, Oppose, Abstain, Other), based on the
+  svg starting the `title` attribute of the vote icon's link.
 
 - `user`: (factor) voter's username.
 
-- `date_vote`: (date) date in which the vote was cast.
+- `date_vote`: (POSIXct, UTC) date and time the vote was cast.
 
 ## Examples
 

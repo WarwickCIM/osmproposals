@@ -53,9 +53,9 @@
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>a dataframe with the following columns:</p><ul><li><p><code>fullurl</code>: (string) the URL to the tagging proposal wiki page.</p></li>
 <li><p><code>votes_raw</code>: (string) the raw text describing the vote.</p></li>
-<li><p><code>vote</code>: (factor) vote (approve, abstain, oppose), inferred from the votes_raw text.</p></li>
+<li><p><code>vote</code>: (factor) vote (Approve, Oppose, Abstain, Other), based on the svg starting the <code>title</code> attribute of the vote icon's link.</p></li>
 <li><p><code>user</code>: (factor) voter's username.</p></li>
-<li><p><code>date_vote</code>: (date) date in which the vote was cast.</p></li>
+<li><p><code>date_vote</code>: (POSIXct, UTC) date and time the vote was cast.</p></li>
 </ul></div>
 
     <div class="section level2">
