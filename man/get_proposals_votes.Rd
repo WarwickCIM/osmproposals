@@ -14,9 +14,9 @@ a dataframe with the following columns:
 \itemize{
 \item \code{fullurl}: (string) the URL to the tagging proposal wiki page.
 \item \code{votes_raw}: (string) the raw text describing the vote.
-\item \code{vote}: (factor) vote (approve, abstain, oppose), inferred from the votes_raw text.
+\item \code{vote}: (factor) vote (Approve, Oppose, Abstain, Other), based on the svg starting the \code{title} attribute of the vote icon's link.
 \item \code{user}: (factor) voter's username.
-\item \code{date_vote}: (date) date in which the vote was cast.
+\item \code{date_vote}: (POSIXct, UTC) date and time the vote was cast.
 }
 }
 \description{

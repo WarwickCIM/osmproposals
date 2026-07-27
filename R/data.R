@@ -60,6 +60,7 @@
 #'   \item{votes_raw}{a string with the wiki page containing the proposal.}
 #'   \item{vote}{(factor) vote type (approve, abstain, oppose).}
 #'   \item{user}{(factor) voter's username}
+#'   \item{date_vote}{(POSIXct, UTC) date and time in which the vote was cast.}
 #'
 #' }
 #'
