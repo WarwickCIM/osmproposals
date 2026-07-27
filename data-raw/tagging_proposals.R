@@ -39,9 +39,10 @@ usethis::use_data(proposals, overwrite = TRUE)
 
 # Proposals votes ---------------------------------------------------------
 proposals_urls <- proposals |>
-  dplyr::filter(status %in% c("Approved", "Rejected", "Proposed")) |>
+  dplyr::filter(
+    status %in% c("Approved", "Rejected", "Proposed", "Canceled")
+  ) |>
   dplyr::pull(fullurl)
-
 
 proposals_votes <- get_proposals_votes(proposals_urls)
 
