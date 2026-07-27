@@ -60,9 +60,12 @@ proposals <- get_tagging_proposals("Proposed")
 #> 
 #> ── Retrieving proposals' information ───────────────────────────────────────────
 #> Webscrapping ■■■■■■■■■■■■■                     40% | ETA:  2s
+#> Webscrapping ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  1s
 #> Webscrapping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 #> 
 #> ── Retrieving proposals' voting summaries ──────────────────────────────────────
+#> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■         80% | ETA:  1s
+#> Webscraping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
 head(proposals)
 #> # A tibble: 5 × 28
 #>   status   title                  sortkeyprefix timestamp           pagelanguage

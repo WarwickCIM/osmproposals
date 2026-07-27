@@ -39,7 +39,7 @@ proposal_votes <- get_proposals_votes('https://wiki.openstreetmap.org/wiki/Propo
 proposal_votes
 #> # A tibble: 23 × 5
 #>    url                                 votes_raw vote  user  date_vote          
-#>    <chr>                               <chr>     <fct> <fct> <dttm>             
+#>    <fct>                               <chr>     <fct> <fct> <dttm>             
 #>  1 https://wiki.openstreetmap.org/wik… I approv… Appr… Luke  2021-01-18 19:21:00
 #>  2 https://wiki.openstreetmap.org/wik… I approv… Appr… Gaus… 2021-01-18 19:34:00
 #>  3 https://wiki.openstreetmap.org/wik… I approv… Appr… Dr C… 2021-01-18 20:52:00

@@ -16,7 +16,7 @@ columns:
 
 - url:
 
-  (string) the URL to the tagging proposal wiki page.
+  (factor, string) the URL to the tagging proposal wiki page.
 
 - votes_raw:
 
