@@ -46,13 +46,13 @@ get_tagging_proposals <- function(
     )
 
     # Store proposal's statuses.
-    tmp_proposals$status = status
+    tmp_proposals$status <- status
 
     if ("ns" %in% colnames(tmp_proposals)) {
       tmp_proposals <- dplyr::select(tmp_proposals, -ns)
     }
 
-    proposals_df = rbind(proposals_df, tmp_proposals)
+    proposals_df <- rbind(proposals_df, tmp_proposals)
 
     # Some cleanup!
     rm(tmp_proposals)
@@ -60,9 +60,16 @@ get_tagging_proposals <- function(
     cli::cli_progress_update()
   }
 
-  # Remove pages that are not proposals per se, but a collection of proposals grouped by year.
-  proposals_df = proposals_df |>
-    dplyr::filter(stringr::str_starts(title, "Approved", negate = TRUE))
+  # Robustness: make sure that only proposals are captured.
+
+  # Remove pages that are not proposals per se, but a collection of proposals
+  # grouped by year.
+  proposals_df <- proposals_df |>
+    dplyr::filter(stringr::str_starts(title, "Approved", negate = TRUE)) |>
+    # Prevent capturing pages that are not related to proposals (e.g. some users
+    # who have made a tagging proposal may use the category in their wiki pages,
+    # and we do not want to capture this)
+    dplyr::filter(stringr::str_detect(title, "Proposal"))
 
   total_proposals <- nrow(proposals_df)
 

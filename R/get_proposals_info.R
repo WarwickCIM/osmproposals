@@ -31,6 +31,9 @@ get_proposals_info <- function(
 
   cli::cli_progress_bar("Webscrapping", total = length(urls))
 
+  # Make sure that only urls containing tagging proposals are scraped.
+  url <- url[grepl("Proposal", url, ignore.case = FALSE)]
+
   for (url in urls) {
     if (verbose == TRUE) {
       print(url)
@@ -101,7 +104,7 @@ get_proposals_info <- function(
     cli::cli_progress_update()
   }
 
-  proposals_info = proposals_info |>
+  proposals_info <- proposals_info |>
     dplyr::mutate(page_creator = as.factor(page_creator)) |>
     dplyr::mutate(latest_editor = as.factor(latest_editor))
 
