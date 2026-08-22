@@ -45,12 +45,8 @@ a dataframe with the following columns:
 proposals_info <- get_proposals_info('https://wiki.openstreetmap.org/wiki/Proposal:Electricity')
 #> 
 #> ── Retrieving proposals' information ───────────────────────────────────────────
+#> Error in as.character(x): cannot coerce type 'closure' to vector of type 'character'
 
 proposals_info
-#>                                                        url  page_creator
-#> 1 https://wiki.openstreetmap.org/wiki/Proposal:Electricity Privatemajory
-#>   date_of_page_creation latest_editor date_of_latest_edit total_number_of_edits
-#> 1   2018-09-03 15:51:00  TigerfellBot 2023-04-30 15:12:00                   220
-#>   total_number_of_distinct_authors
-#> 1                               53
+#> Error: object 'proposals_info' not found
 ```

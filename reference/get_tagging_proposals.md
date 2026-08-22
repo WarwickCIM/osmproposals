@@ -59,20 +59,18 @@ proposals <- get_tagging_proposals("Proposed")
 #> ✔ Retrieved details to 5 proposals.
 #> 
 #> ── Retrieving proposals' information ───────────────────────────────────────────
-#> Webscrapping ■■■■■■■■■■■■■                     40% | ETA:  2s
-#> Webscrapping ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  100% | ETA:  0s
-#> 
-#> ── Retrieving proposals' voting summaries ──────────────────────────────────────
+#> Error in as.character(x): cannot coerce type 'closure' to vector of type 'character'
 head(proposals)
-#> # A tibble: 5 × 28
+#> # A tibble: 6 × 30
 #>   status   title                  sortkeyprefix timestamp           pagelanguage
-#>   <chr>    <chr>                  <chr>         <dttm>              <fct>       
-#> 1 Proposed Proposal:3D tagging f… 3D tagging f… 2025-09-06 17:57:58 en          
-#> 2 Proposed Proposal:*:language-L… :<language>-… 2026-05-01 00:14:54 en          
-#> 3 Proposed Proposal:Note suffix   :note suffix  2022-07-12 09:33:14 en          
-#> 4 Proposed Proposal:Access key    access_key    2024-10-15 12:03:14 en          
-#> 5 Proposed Proposal:Add language… Add language… 2024-11-13 09:49:37 en          
-#> # ℹ 23 more variables: touched <dttm>, length <int>, fullurl <chr>,
+#>   <fct>    <chr>                  <chr>         <dttm>              <fct>       
+#> 1 Rejected Proposal:Electricity   "\"electrici… 2022-03-15 02:38:02 en          
+#> 2 Rejected Proposal:Motorcycle f… "\"tag motor… 2022-03-14 20:31:57 en          
+#> 3 Rejected Proposal:Tramtrack on… "\"Tramtrack… 2022-03-15 03:40:16 en          
+#> 4 Rejected Proposal:Amenity=loun… "Amenity=lou… 2024-10-30 16:40:54 en          
+#> 5 Rejected Proposal:Aquatics cen… "Aquatics ce… 2022-03-14 15:18:12 en          
+#> 6 Rejected Proposal:Artwork type… "artwork typ… 2022-03-15 22:24:41 en          
+#> # ℹ 25 more variables: touched <dttm>, length <int>, fullurl <chr>,
 #> #   editurl <chr>, pageid <int>, page_creator <fct>,
 #> #   date_of_page_creation <dttm>, latest_editor <fct>,
 #> #   date_of_latest_edit <dttm>, total_number_of_edits <dbl>,
